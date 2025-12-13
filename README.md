@@ -1,31 +1,27 @@
-[![Deployed to github pages](https://github.com/mrdjohnson/llm-x/actions/workflows/deploy_to_gh_pages.yml/badge.svg)](https://github.com/mrdjohnson/llm-x/actions/workflows/deploy_to_gh_pages.yml)
-
 # LLM X
 
-[Chrome Extension](https://chromewebstore.google.com/detail/llm-x/iodcdhcpahifeligoegcmcdibdkffclk) | [Web/Mobile app](https://mrdjohnson.github.io/llm-x/)
+A completely private, offline-capable ChatGPT-style UI for running local LLMs. Connect to Ollama, LM Studio, OpenAI-compatible servers, and Gemini Nano. Generate images with AUTOMATIC1111, and enjoy a modern, feature-rich chat experience—all without sending your data anywhere.
 
-<img src="https://raw.githubusercontent.com/mrdjohnson/llm-X/main/public/LLMX.png" alt="drawing" width="200"/>
+## Privacy Statement
 
-# Privacy statement:
+LLM X does not make any external API calls. (Go ahead, check your network tab and see the Fetch section). Your chats and image generations are 100% private. This site/app works completely offline.
 
-LLM X does not make any external api calls. (go ahead, check your network tab and see the Fetch section). Your chats and image generations are 100% private. This site / app works completely offline.
+## Known Issues
 
-# Issues:
+LLM X (web app) will not connect to a server that is not secure. This means that you can use LLM X on localhost (considered a [secure context](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts)) but if you're trying to use LLM-X over a network, the server needs to be served over HTTPS or else it will not work.
 
-LLM X (web app) will not connect to a server that is not secure. This means that you can use LLM X on localhost (considered a [secure context](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts)) but if you're trying to use llm-x over a network the server needs to be from https or else it will not work.
+## Recent Additions
 
-# Recent additions:
-
-- Multi-model support! Chats now support multiple models, from any connected server, and can respond with each them at the same time
+- Multi-model support! Chats now support multiple models, from any connected server, and can respond with each of them at the same time
 - Quick Delete! using the quick search/ kbar panel, it is super easy to delete all app related data
 - Chrome extension support! All the features of the web app, built into the browser
 - Gemini Nano support!
 - IndexedDB support! All text is now saved in IndexedDB instead of local storage
-- Auto-connect on load. If there is a server thats visible and ready to connect, we connect to it for you
+- Auto-connect on load. If there is a server that's visible and ready to connect, we connect to it for you
 
-# How To Use:
+## How To Use
 
-### Prerequisites for application
+### Prerequisites
 
 - Ollama: Download and install [Ollama](https://ollama.com/)
   - Pull down a model (or a few) from the [library](https://ollama.com/library) Ex: `ollama pull llava` (or use the app)
@@ -36,14 +32,14 @@ LLM X (web app) will not connect to a server that is not secure. This means that
   - Enable [Api Gemini for nano](chrome://flags/#prompt-api-for-gemini-nano)
   - Relaunch Chrome (may need to wait for it to download)
 
-## How to use web client (no install):
+### Web Client (No Install Required)
 
-### Prerequisites for web client
+**Prerequisites:**
 
 - Ollama Options:
-  - Use [Ollama's FAQ](https://github.com/ollama/ollama/blob/main/docs/faq.md#how-do-i-configure-ollama-server) to set `OLLAMA_ORIGINS` = `https://mrdjohnson.github.io`
-  - Run this in your terminal `OLLAMA_ORIGINS=https://mrdjohnson.github.io ollama serve`
-    - (Powershell users: `$env:OLLAMA_ORIGINS="https://mrdjohnson.github.io"; ollama serve`)
+  - Use [Ollama's FAQ](https://github.com/ollama/ollama/blob/main/docs/faq.md#how-do-i-configure-ollama-server) to set `OLLAMA_ORIGINS` to your deployment URL
+  - Run this in your terminal `OLLAMA_ORIGINS=<your-deployment-url> ollama serve`
+    - (Powershell users: `$env:OLLAMA_ORIGINS="<your-deployment-url>"; ollama serve`)
 - LM Studio:
   - Run this in your terminal: `lms server start --cors=true`
 - A1111:
@@ -52,11 +48,11 @@ LLM X (web app) will not connect to a server that is not secure. This means that
 
 ---
 
-- Use your browser to go to [LLM-X](https://mrdjohnson.github.io/llm-x/)
+- Use your browser to go to the deployed LLM-X application
 - Go offline! (optional)
 - Start chatting!
 
-### Prerequisites for chrome extension
+**Prerequisites:**
 
 - Download and install [Chrome Extension](https://chromewebstore.google.com/detail/llm-x/iodcdhcpahifeligoegcmcdibdkffclk)
 - Ideally this works out of the box, no special anything needed to get it connecting! If not continue with the steps below:
@@ -69,16 +65,16 @@ LLM X (web app) will not connect to a server that is not secure. This means that
 - A1111:
   - Run this in the a1111 project folder: `./webui.sh --api --listen --cors-allow-origins "*"`
 
-## How to use offline:
+### Offline Mode
 
 - Follow instructions for "How to use web client"
 - In your browser search bar, there should be a download/install button, press that.
 - Go offline! (optional)
 - Start chatting!
 
-## How to use from project source:
+### From Project Source
 
-### Prerequisites for project source
+**Prerequisites:**
 
 - Ollama: Run this in your terminal `ollama serve`
 - LM Studio: Run this in your terminal: `lms server start`
@@ -86,26 +82,26 @@ LLM X (web app) will not connect to a server that is not secure. This means that
 
 ---
 
-### Vite preview mode
+#### Vite Preview Mode
 
 - Pull down this project; `yarn install`, `yarn preview`
 - Go offline! (optional)
 - Start chatting!
 
-### Docker
+#### Docker
 
 - Run this in your terminal: `docker compose up -d`
 - Open http://localhost:3030
 - Go offline! (optional)
 - Start chatting!
 
-### Chrome Extension
+#### Chrome Extension (Development)
 
 - Pull down this project; `yarn chrome:build`
 - Navigate to `chrome://extensions/`
 - Load unpacked (developer mode option) from path: `llm-x/extensions/chrome/dist`
 
-# Goals / Features
+## Features
 
 - [x] **COMPLETELY PRIVATE; WORKS COMPLETELY OFFLINE**
 - [x] **Ollama integration!**
@@ -129,64 +125,67 @@ LLM X (web app) will not connect to a server that is not secure. This means that
 - [x] Import / Export chat(s)
 - [x] **Continuous Deployment!** Merging to the master branch triggers a new github page build/deploy automatically
 
-# Screenshots:
+## Screenshots
 
 | Showing Chrome extension mode with Google's on-device Gemini Nano                                                                |
 | -------------------------------------------------------------------------------------------------------------------------------- |
-| ![Logo convo screenshot](https://raw.githubusercontent.com/mrdjohnson/llm-X/main/screenshots/Screenshot-gemini-in-extension.png) |
+| ![Logo convo screenshot](screenshots/Screenshot-gemini-in-extension.png) |
 
 | Showing Chrome extension mode with Ollama's llama3.2-vision                                                                                 |
 | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Logo convo screenshot](https://raw.githubusercontent.com/mrdjohnson/llm-X/main/screenshots/Screenshot-modernity-and-forward-thinking.png) |
+| ![Logo convo screenshot](screenshots/Screenshot-modernity-and-forward-thinking.png) |
 
 | Showing ability to run ollama and LM Studio at the same time                                                                     |
 | -------------------------------------------------------------------------------------------------------------------------------- |
-| ![Logo convo screenshot](https://raw.githubusercontent.com/mrdjohnson/llm-X/main/screenshots/Screenshot-ollama-and-lmstudio.png) |
+| ![Logo convo screenshot](screenshots/Screenshot-ollama-and-lmstudio.png) |
 
 | Conversation about logo                                                                                                 |
 | ----------------------------------------------------------------------------------------------------------------------- |
-| ![Logo convo screenshot](https://raw.githubusercontent.com/mrdjohnson/llm-X/main/screenshots/Screenshot-logo-convo.png) |
+| ![Logo convo screenshot](screenshots/Screenshot-logo-convo.png) |
 
 | Image generation example!                                                                                                             |
 | ------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Image generation screenshot](https://raw.githubusercontent.com/mrdjohnson/llm-X/main/screenshots/Screenshot-image-generation-1.png) |
+| ![Image generation screenshot](screenshots/Screenshot-image-generation-1.png) |
 
 | Showing off omnibar and code                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------- |
-| ![Omnibar and code screenshot](https://raw.githubusercontent.com/mrdjohnson/llm-X/main/screenshots/Screenshot-omnibar-code.png) |
+| ![Omnibar and code screenshot](screenshots/Screenshot-omnibar-code.png) |
 
 | Showing off code and light theme                                                                                                  |
 | --------------------------------------------------------------------------------------------------------------------------------- |
-| ![Code and light theme screenshot](https://raw.githubusercontent.com/mrdjohnson/llm-X/main/screenshots/Screenshot-code-light.png) |
+| ![Code and light theme screenshot](screenshots/Screenshot-code-light.png) |
 
 | Responding about a cat                                                                                    |
 | --------------------------------------------------------------------------------------------------------- |
-| ![Cat screenshot](https://raw.githubusercontent.com/mrdjohnson/llm-X/main/screenshots/Screenshot-cat.png) |
+| ![Cat screenshot](screenshots/Screenshot-cat.png) |
 
 | LaTex support!                                                                                                |
 | ------------------------------------------------------------------------------------------------------------- |
-| ![Latex screenshot](https://raw.githubusercontent.com/mrdjohnson/llm-X/main/screenshots/Screenshot-latex.png) |
+| ![Latex screenshot](screenshots/Screenshot-latex.png) |
 
 | Another logo response                                                                                           |
 | --------------------------------------------------------------------------------------------------------------- |
-| ![Logo 2 screenshot](https://raw.githubusercontent.com/mrdjohnson/llm-X/main/screenshots/Screenshot-logo-1.png) |
+| ![Logo 2 screenshot](screenshots/Screenshot-logo-1.png) |
 
-# Misc
+## About
 
-**_What is this?_**
-ChatGPT style UI for the niche group of folks who run [Ollama](https://ollama.com/) (think of this like an offline chat gpt server) locally. Supports sending and receiving images and text!
-**WORKS OFFLINE** through PWA ([Progressive Web App](https://web.dev/explore/progressive-web-apps)) standards (its not dead!)
+### What is this?
 
-**_Why do this?_**
-I have been interested in **LLM UI** for a while now and this seemed like a good intro application.
-I've been introduced to a lot of modern technologies thanks to this project as well, its been fun!
+A ChatGPT-style UI for running local LLMs. Perfect for users who want to run [Ollama](https://ollama.com/) (think of this like an offline ChatGPT server) locally. Supports sending and receiving images and text!
 
-**_Why so many buzz words?_**
-I couldn't help but bee cool 😎
+**WORKS OFFLINE** through PWA ([Progressive Web App](https://web.dev/explore/progressive-web-apps)) standards—it's not dead!
 
-## Tech Stack (thank you's):
+### Why this project?
 
-**_Logic helpers:_**
+This project was created to provide a modern, feature-rich interface for local LLM interactions. It's been a great learning experience, introducing many modern web technologies and best practices.
+
+### Why so many buzz words?
+
+I couldn't help but be cool 😎
+
+## Tech Stack
+
+### Core Logic
 
 - [React](https://react.dev/)
 - [Typescript](https://www.typescriptlang.org/)
@@ -196,7 +195,7 @@ I couldn't help but bee cool 😎
 - [~~Mobx State Tree~~](https://mobx-state-tree.js.org/intro/welcome) (great for rapid starting a project, terrible for long term maintenance)
 - [Langchain.js](https://js.langchain.com/docs/introduction/)
 
-**_UI Helpers:_**
+### UI Components
 
 - [Tailwind css](https://tailwindcss.com/)
 - [DaisyUI](https://daisyui.com/)
@@ -207,42 +206,50 @@ I couldn't help but bee cool 😎
 - [Yet Another React Lightbox](https://yet-another-react-lightbox.com/)
 - [React speech to text](https://www.npmjs.com/package/react-text-to-speech/v/0.19.5)
 
-**_Project setup helpers:_**
+### Build Tools
 
 - [Vite](https://vitejs.dev/)
 - [Vite PWA plugin](https://vite-pwa-org.netlify.app/)
 - [Vite Plugin Web Extension](https://vite-plugin-web-extension.aklinker1.io/guide/)
 
-**_Inspiration:_**
-[ollama-ui's](https://github.com/ollama-ui/ollama-ui) project. Which allows users to connect to ollama via a [web app](https://ollama-ui.github.io/ollama-ui/)
+### Inspiration
 
-[Perplexity.ai](https://www.perplexity.ai/) Perplexity has some amazing UI advancements in the LLM UI space and I have been very interested in getting to that point. Hopefully this starter project lets me get closer to doing something similar!
+- [ollama-ui](https://github.com/ollama-ui/ollama-ui) - A project that allows users to connect to Ollama via a [web app](https://ollama-ui.github.io/ollama-ui/)
+- [Perplexity.ai](https://www.perplexity.ai/) - Amazing UI advancements in the LLM UI space that inspired many features in this project
 
-# Getting started with local development
+## Getting Started with Local Development
 
-(please note the minimum engine requirements in the package json)
+**Note:** Please check the minimum engine requirements in `package.json` before starting.
 
-Clone the project, and run `yarn` in the root directory
+1. Clone the project
+2. Run `yarn` in the root directory to install dependencies
+3. Run `yarn dev` to start a local instance (opens a browser tab under HTTPS for PWA requirements)
 
-`yarn dev` starts a local instance and opens up a browser tab under https:// (for PWA reasons)
+## ⭐ Contributing
 
-# ⭐ Contribution Guide
+Thanks to TypeScript, Prettier, and Biome, LLM-X is ready for all contributors!
 
-Thanks to typescript, prettier, and biome. LLM-X should be ready for all contributors!
+We welcome contributions! Please ensure your code follows the project's style guidelines and passes all linting checks.
 
-## Notes:
+### Developer Notes
 
 - [Easy Platform Splitting ⭐⭐](docs/platform-code-splitting.md)
 - [Debugging blank screen](docs/debugging.md)
 
-## Learnings
+### Development Learnings
 
-- LangChain.js was attempted while spiking on this app but unfortunately it was not set up correctly for stopping incoming streams, I hope this gets fixed later in the future OR if possible a custom LLM Agent can be utilized in order to use LangChain
+- **LangChain.js**: Initially attempted but had issues with stopping incoming streams. This has since been resolved and LangChain is now working in the app!
 
-  - edit: Langchain is working and added to the app now!
+- **Migration from Create React App**: Originally used create-react-app 👴 without knowing it was no longer maintained. Migrated to Vite 🤞, which allows using libraries like `ollama-js` that weren't available before.
 
-- Originally I used create-react-app 👴 while making this project without knowing it is no longer maintained, I am now using Vite. 🤞 This already allows me to use libs like `ollama-js` that I could not use before. Will be testing more with langchain very soon
+- **Deployment**: Changes to the main branch trigger an immediate deploy to the production environment.
 
-- This readme was written with [https://stackedit.io/app](https://stackedit.io/app)
+---
 
-- Changes to the main branch trigger an immediate deploy to https://mrdjohnson.github.io/llm-x/
+## License
+
+Please check the LICENSE file in the repository for license information.
+
+## Support
+
+For issues, questions, or contributions, please open an issue on the repository.
